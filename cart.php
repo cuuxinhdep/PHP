@@ -14,7 +14,7 @@ $cartItems = getCartItem();
 <main>
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 ">
             <h2>Shopping cart</h2>
             <table class="table">
                 <thead>
@@ -34,9 +34,9 @@ $cartItems = getCartItem();
                             </div>
                         <?php echo $item['NAME']; ?>
                         </td>
-                        <td>$</td>
+                        <td>$ <?php echo $item['price']; ?></td>
                         <td><?php echo $item['id']; ?></td>
-                        <td>$</td>
+                        <td>$<?php echo number_format($item['price'] * $item['id']); ?></td>
                     </tr>
                     <?php endforeach; ?>
                     </tbody>
@@ -48,7 +48,13 @@ $cartItems = getCartItem();
                 <tbody>
                     <tr>
                         <td>Subtotal</td>
-                        <td>$</td>
+                        <td>$<?php
+                             $sub = 0;
+                             foreach($cartItems as $item) {
+                                $sub += $item['price'] * $item['id'];
+                             }
+                             echo number_format($sub,2);
+                             ?></td>
                     </tr>
                     <tr>
                         <td>Shipping</td>
@@ -56,7 +62,13 @@ $cartItems = getCartItem();
                     </tr>
                     <tr>
                         <td>Total</td>
-                        <td>$</td>
+                        <td>$<?php
+                             $sub = 0;
+                             foreach($cartItems as $item) {
+                                $sub += $item['price'] * $item['id'];
+                             }
+                             echo number_format($sub,2);
+                             ?></td>
                     </tr>
                 </tbody>
             </table>
