@@ -13,7 +13,7 @@ $cartItems = getCartItem();
 <?php include_once("nav.php"); ?>
 <main>
 <div class="container">
-    <div class="row fs-5">
+    <div class="row ">
         <div class="col-md-8">
             <div class="mt-5">
             <h2>Shopping Cart</h2>
@@ -46,7 +46,7 @@ $cartItems = getCartItem();
             </div>
         </div>
         <div class="col-md-4 position-relative">
-            <div class="position-sticky " style="top: 100px;">
+            <div class="position-sticky align-middle" style="top: 100px;">
             <h2>Cart Totals</h2>
             <table class="table ">
                 <tbody>
