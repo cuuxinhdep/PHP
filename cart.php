@@ -13,10 +13,11 @@ $cartItems = getCartItem();
 <?php include_once("nav.php"); ?>
 <main>
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 ">
-            <h2>Shopping cart</h2>
-            <table class="table">
+    <div class="row fs-5">
+        <div class="col-md-8">
+            <div class="mt-5">
+            <h2>Shopping Cart</h2>
+            <table class="table align-middle ">
                 <thead>
                     <tr>
                         <th>Product</th>
@@ -29,10 +30,11 @@ $cartItems = getCartItem();
                 <?php foreach($cartItems as $item) :?>
                     <tr>
                         <td>
-                            <div class="card">
-                                <img src="<?php echo $item['thumbnail']; ?>" alt="<?php echo $item['NAME'] ?>" class="card-img-top">
-                            </div>
                         <?php echo $item['NAME']; ?>
+                            <div class="card" style="width: 7rem;">
+                                <img src="<?php echo $item['thumbnail']; ?>" class="object-fit-fill border rounded" alt="<?php echo $item['NAME'] ?>" class="card-img-top">
+                            </div>
+                        
                         </td>
                         <td>$ <?php echo $item['price']; ?></td>
                         <td><?php echo $item['id']; ?></td>
@@ -41,10 +43,12 @@ $cartItems = getCartItem();
                     <?php endforeach; ?>
                     </tbody>
             </table>
+            </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 position-relative">
+            <div class="position-sticky " style="top: 100px;">
             <h2>Cart Totals</h2>
-            <table class="table">
+            <table class="table ">
                 <tbody>
                     <tr>
                         <td>Subtotal</td>
@@ -72,7 +76,8 @@ $cartItems = getCartItem();
                     </tr>
                 </tbody>
             </table>
-            <button class="btn btn-primary">Proceed to checkout</button>
+            <a class="btn btn-primary" href="checkout.php">Proceed To Checkout</a>
+            </div>
         </div>
     </div>
 </div>
