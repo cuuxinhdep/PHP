@@ -1,8 +1,8 @@
-
 <?php 
 session_start();
 require_once("./function/connect.php");
 require_once("./function/cart.php");
+require_once("./function/paypal.php");
 $customer_name = $_POST["customer_name"];
 $email = $_POST["email"];
 $telephone = $_POST["telephone"];
@@ -48,7 +48,25 @@ if($order_id != null){
              VALUES($order_id,$product_id, $buy_qty,$price)";
         insert($sql);     
     }
-    header("Location: /thankyou.php");
+    if($payment_method == "PAYPAL"){
+        // thoong tin tài khoản paypal
+        $client_id = "AfYxjscQNrcgUGCNz4bBqGON8Njdab5dR_tT9xysknTRJTho4BwW2_HIwgw5lU1RdZ5-PX83XhDUeWrd";
+        $client_secret = "ENCxwcwlaBBRkxLCoqLO0CC4GqOHurj-wVOxoX3dw_lAvLGomXYeUMMUNuyreRVB9R0DjeOJQPaPWXIx";
+
+        // url nhận kết quả
+        $success_url = "http://localhost:8888/success_paypal.php?order_id=$order_id";
+        $fail_url = "http://localhost:8888/fail_paypal.php?order_id=$order_id";
+
+        // kiểm tra tài khoản paypal và lấy access token
+        $access_token = get_access_token($client_id,$client_secret);
+        // nếu access ok thì tạo thanh toán
+        $payment = create_payment($access_token,$success_url,$fail_url,$grand_total);
+        // chuyển khách hàng sang trang thanh toán của paypal
+        header("Location: ". $payment['links']['1']['href']);
+        die();
+    }
+
+    // header("Location: /thankyou.php");
     // die();
 }
 header("Location: /checkout.php");

@@ -1,7 +1,7 @@
 <?php 
     session_start();
     require_once("./function/cart.php");
-    $items = getCartItem();
+    $cartItems = getCartItem();
     $grand_total = 0;
 ?>
 <!DOCTYPE html>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col">
                     <ul>
-                        <?php foreach($items as $item): ?>
+                        <?php foreach($cartItems as $item): ?>
                             <?php $grand_total +=  $item["buy_qty"] * $item["price"]; ?>
                             <li>
                                 <p>
