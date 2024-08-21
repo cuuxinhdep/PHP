@@ -22,8 +22,8 @@ function getCartItem(){
             "NAME" => $item['NAME'],
             "thumbnail" => $item['thumbnail'],
             "price" =>(float) $item['price'],
-            "in stock" => $item['buy_qty'] > $buy_qty,
-            "qty" => $item['buy_qty'] 
+            "in_stock"=> $item["qty"] > $cart[$item["id"]]?true:false,
+            "buy_qty"=>$cart[$item["id"]] 
         ];
        
     }

@@ -76,7 +76,7 @@ $cartItems = getCartItem();
                     </tr>
                 </tbody>
             </table>
-            <a class="btn btn-primary" href="checkout.php">Proceed To Checkout</a>
+            <a class="btn btn-primary" href="/checkout.php">Proceed To Checkout</a>
             </div>
         </div>
     </div>
