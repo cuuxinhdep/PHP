@@ -66,7 +66,7 @@ if($order_id != null){
         die();
     }
 
-    // header("Location: /thankyou.php");
-    // die();
+    header("Location: /thankyou.php");
+    die();
 }
 header("Location: /checkout.php");

@@ -1,3 +1,3 @@
-<h1>OK
-    
-</h1>
+<?php
+header("location: thankyou.php"); 
+?>
