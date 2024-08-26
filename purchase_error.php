@@ -4,7 +4,7 @@ require_once("./function/connect.php");
 
 <!DOCTYPE html>
 <html lang="en">
-<?php require_once("head.php"); ?>
+<?php require_once("./html/head.php"); ?>
 <body>
 <div class="container text-center mt-5">
         <div class="card">
