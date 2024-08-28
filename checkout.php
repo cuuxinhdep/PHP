@@ -6,9 +6,9 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include("./html/head.php");?>
+<?php include("head.php");?>
 <body>
-<?php include("./html/nav.php");?>
+<?php include("nav.php");?>
     <main>
         <div class="container">
             <h1>Checkout</h1>

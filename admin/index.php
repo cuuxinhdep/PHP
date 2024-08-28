@@ -1,10 +1,11 @@
 <?php 
-    require_once("./../function/order.php");
+    require_once("./function/order.php");
+    die("A");
     $orders = order_list();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once("./../html/head.php");?>
+<?php include_once("./../head.php"); ?>
 <body>
     <main>
         <div class="row">
@@ -39,8 +40,15 @@
                                 <td><?php echo $item["grand_total"];?></td>
                                 <td><?php echo $item["created_at"];?></td>
                                 <td><?php echo $item["payment_method"];?></td>
-                                <td><?php echo $item["paid"];?></td>
-                                <td><?php echo $item["status"];?></td>
+                                <td>
+                                    <?php if($item["paid"]): ?>
+                                        <span class="text-success">Paid</span>
+                                        <?php else: ?>
+                                        <span class="text-danger">UnPaid</span>
+                                        <?php endif; ?>
+                                </td>
+                                <td><?php echo status_label($item["status"]); ?></td>
+                                <td><a href="/admin/order_detail.php?id=<?php echo $item["id"];?>">Details</td>
                             </tr>
                         <?php endforeach;?>    
                     </tbody>
